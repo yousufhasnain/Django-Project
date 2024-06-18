@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block titile %}
+
+  <title>Registration - taskmate</title>
+  
+{% endblock titile %}
+
+ {% block content %}
+   <div class="container">
+    <br>
+    <h1>Register On TaskMate</h1>
+    <br>
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+            {{message}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+    
+    {% endif %}
+     
+
+      <div class="bg-white mt-5 rounded-lg shadow-lg">
+        <form method="POST" class="mt-5 col-8 mx-5 my-5 ">
+          {% csrf_token %}
+  
+          {{register_form|crispy}}
+  
+          <button type="submit" class="btn btn-primary mb-5 w-4 h-6">Register</button>
+      </form>
+      </div>
+
+   
+    
+
+  
+   </div>
+ {% endblock content %}
